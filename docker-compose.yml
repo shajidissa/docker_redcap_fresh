@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  redcap:
+    restart: always
+    build:
+      context: ./redcap
+      args:
+        redcap_version: "7.6.1"
+    ports:
+      - "80:80"
+    volumes:
+      - /share:/share
+    network_mode: host
+
