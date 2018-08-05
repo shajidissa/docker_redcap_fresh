@@ -101,7 +101,7 @@ RUN sed -i.bkp '/print "<\/form>";/a print "<img src='\''/redcap/chrome.png'\''>
 RUN chmod 777 -R /var/www/site/redcap/temp
 RUN mkdir /usr/local/redcap-edocs
 RUN chmod 777 -R /usr/local/redcap-edocs
-RUN chmod 777 -R /var/www/site/redcap/modules/
+RUN chmod 777 -R /var/www/site/redcap/modules
 
 # php changes
 RUN sed -i.bak 's/upload_max_filesize = 2M/upload_max_filesize = 32M/g' /etc/php/7.2/apache2/php.ini
