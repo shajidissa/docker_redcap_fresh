@@ -6,7 +6,7 @@ services:
     build:
       context: ./redcap
       args:
-        redcap_version: "7.6.1"
+        redcap_version: "8.5.8"
     ports:
       - "80:80"
     volumes:
