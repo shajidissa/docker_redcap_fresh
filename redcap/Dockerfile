@@ -108,7 +108,7 @@ RUN sed -i.bak 's/post_max_size = 8M/post_max_size = 32M/g' /etc/php/7.2/apache2
 RUN sed -i.bak 's/; max_input_vars = 1000/max_input_vars = 10000/g' /etc/php/7.2/apache2/php.ini
 RUN sed -i.bak 's/;SMTP = localhost/SMTP=127.0.0.1/g' /etc/php/7.2/apache2/php.ini
 RUN sed -i.bak 's/;smtp_port = 25/smtp_port=25/g' /etc/php/7.2/apache2/php.ini
-RUN sed -i.bak ';sendmail_from = me@example.com/sendmail_path=/usr/sbin/sendmail -t -i/g' /etc/php/7.2/apache2/php.ini
+RUN sed -i.bak ';sendmail_from = me@example.com/sendmail_path=\\/usr\\/sbin\\/sendmail -t -i/g' /etc/php/7.2/apache2/php.ini
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
