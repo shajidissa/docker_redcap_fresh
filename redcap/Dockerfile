@@ -39,7 +39,7 @@ MAINTAINER Saj Issa <saj.issa@gmail.com>
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php7.0  php7.2-mysql  php7.2-curl  php7.2-json libapache2-mod-php7.2  php7.2-zip php7.2-gd php-pear curl phpmyadmin libpcre3-dev wget git vim unzip mysql-server sendmail ntp cron supervisor ssmtp && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php7.0  php7.2-mysql  php7.2-curl  php7.2-json libapache2-mod-php7.2  php7.2-zip php7.2-gd php-pear curl phpmyadmin libpcre3-dev wget git vim unzip mysql-server sendmail-bin sendmail ntp cron supervisor ssmtp && \
     apt-get clean && \
     update-rc.d apache2 defaults 
 
