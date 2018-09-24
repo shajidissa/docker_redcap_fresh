@@ -39,7 +39,7 @@ MAINTAINER Saj Issa <saj.issa@gmail.com>
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php7.0  php7.2-mysql  php7.2-curl  php7.2-json libapache2-mod-php7.2  php7.2-zip php7.2-gd php-pear curl phpmyadmin libpcre3-dev wget git vim unzip mysql-server ntp cron supervisor ssmtp && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php7.0  php7.2-mysql  php7.2-curl  php7.2-json libapache2-mod-php7.2  php7.2-zip php7.2-gd php-pear curl phpmyadmin libpcre3-dev wget git vim unzip mysql-server sendmail ntp cron supervisor ssmtp && \
     apt-get clean && \
     update-rc.d apache2 defaults 
 
@@ -106,6 +106,9 @@ RUN chmod 777 -R /usr/local/redcap-edocs
 RUN sed -i.bak 's/upload_max_filesize = 2M/upload_max_filesize = 32M/g' /etc/php/7.2/apache2/php.ini
 RUN sed -i.bak 's/post_max_size = 8M/post_max_size = 32M/g' /etc/php/7.2/apache2/php.ini
 RUN sed -i.bak 's/; max_input_vars = 1000/max_input_vars = 10000/g' /etc/php/7.2/apache2/php.ini
+RUN sed -i.bak 's/;SMTP = localhost/SMTP=127.0.0.1/g' /etc/php/7.2/apache2/php.ini
+RUN sed -i.bak 's/;smtp_port = 25/smtp_port=25/g' /etc/php/7.2/apache2/php.ini
+RUN sed -i.bak ';sendmail_from = me@example.com/sendmail_path=/usr/sbin/sendmail -t -i/g' /etc/php/7.2/apache2/php.ini
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
